@@ -64,6 +64,5 @@ function deleteTask(i){
 
 
 function checkDone() {
-newItem.classList.add("taskDone");
-
+    newItem.classList.toggle("taskDone");
 }
