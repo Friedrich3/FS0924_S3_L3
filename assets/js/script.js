@@ -11,7 +11,7 @@ btnAdd.addEventListener("click", function (e) {
     if (!checkInput()) return;
     addListItem();
     addToList();
-    console.log(listItems);
+
     newItem.addEventListener("click", function(){
             console.log("UNDERLINE")
             checkDone();
@@ -49,6 +49,7 @@ function addToList() {
         btnDelete.setAttribute('type', 'button');
 		btnDelete.setAttribute('onclick', `deleteTask(${i})`);
         btnDelete.innerHTML= `<i class="fa-solid fa-trash"></i>`;
+        btnDelete.classList.add("delete");
         newItem.appendChild(btnDelete);
 
         list.appendChild(newItem);
