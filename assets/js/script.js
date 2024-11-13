@@ -12,12 +12,7 @@ btnAdd.addEventListener("click", function (e) {
     addListItem();
     addToList();
 
-    newItem.addEventListener("click", function(){
-            console.log("UNDERLINE")
-            checkDone();
-        }
-    ) 
-       
+
 });
 
 
@@ -28,13 +23,13 @@ function checkInput() {
         return false;
 
     } else {
-        return true
+        return true;
     };
 };
 
 
 function addListItem() {
-    listItems.push(insertTask.value) //Ad ogni click Viene aggiunto un elemento all'array.
+    listItems.push(insertTask.value)            //Ad ogni click Viene aggiunto un elemento all'array.
 };
 
 
@@ -44,25 +39,24 @@ function addToList() {
         newItem = document.createElement("li");
         newItem.innerText = listItems[i];
         newItem.classList.add("listItem");
+
+        newItem.addEventListener("click", function () {
+        newItem.classList.toggle("taskDone");
+        });
+
+         //Delete Button
         let btnDelete = document.createElement("button")
-        //BOTTONE DELETE
         btnDelete.setAttribute('type', 'button');
-		btnDelete.setAttribute('onclick', `deleteTask(${i})`);
-        btnDelete.innerHTML= `<i class="fa-solid fa-trash"></i>`;
+        btnDelete.setAttribute('onclick', `deleteTask(${i})`);
+        btnDelete.innerHTML = `<i class="fa-solid fa-trash"></i>`;
         btnDelete.classList.add("delete");
         newItem.appendChild(btnDelete);
-
+        //Delete Button
         list.appendChild(newItem);
         insertTask.value = "";
     };
 };
-function deleteTask(i){
-    listItems.splice(i,1);
+function deleteTask(i) {
+    listItems.splice(i, 1);
     addToList();
-
-}
-
-
-function checkDone() {
-    newItem.classList.toggle("taskDone");
 }
